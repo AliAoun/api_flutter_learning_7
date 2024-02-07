@@ -58,11 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (!snapshot.hasData) {
                       return const Center(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CircularProgressIndicator(),
-                          SizedBox(height: 8,),
-                          Text('Loading...'),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text('Loading...',
+                            style: TextStyle(
+                              fontWeight:
+                              FontWeight.bold,
+                              fontSize: 16,)),
                         ],
                       ));
                     } else {
