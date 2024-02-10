@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class WeatherTest extends StatefulWidget {
+  const WeatherTest({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<WeatherTest> createState() => _WeatherTestState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _WeatherTestState extends State<WeatherTest> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
   }
 }
+
