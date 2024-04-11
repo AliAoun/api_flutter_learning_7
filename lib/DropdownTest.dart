@@ -37,6 +37,7 @@ class _DropDownTestingState extends State<DropDownTesting> {
     throw Exception('Error fetching data');
   }
 
+  var selectedIdValue,selectedTitleValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,16 +55,43 @@ class _DropDownTestingState extends State<DropDownTesting> {
                 future: getpost(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return DropdownButton(
-                        hint: Text('Select from here...'),
-                        items: snapshot.data!.map((e){
-                          return DropdownMenuItem(
-                              value: e.id.toString(),
-                              child: Text(e.id.toString()));
-                        }).toList(),
-                        onChanged: (value) {});
+                    return Column(
+                      children: [
+                        DropdownButton(
+                            hint: Text('Select Id...'),
+                            value: selectedIdValue,
+                            isExpanded: true,
+                            items: snapshot.data!.map((e){
+                              return DropdownMenuItem(
+                                  value: e.id.toString(),
+                                  child: Text(e.id.toString()));
+                            }).toList(),
+                            onChanged: (value) {
+                              selectedIdValue = value;
+                              setState(() {
+
+                              });
+                            }),
+                        DropdownButton(
+                            hint: Text('Select title...'),
+                            value: selectedTitleValue,
+                            isExpanded: true,
+                            items: snapshot.data!.map((e){
+                              return DropdownMenuItem(
+                                  value: e.title.toString(),
+                                  child: Text(e.title.toString()));
+                            }).toList(),
+                            onChanged: (value) {
+                              selectedTitleValue = value;
+                              setState(() {
+
+                              });
+                            })
+                      ],
+                    );
                   } else {
-                    return CircularProgressIndicator();
+                    return Center(
+                        child: CircularProgressIndicator());
                   }
                 })
           ],
