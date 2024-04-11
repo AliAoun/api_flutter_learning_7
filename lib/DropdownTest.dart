@@ -37,7 +37,7 @@ class _DropDownTestingState extends State<DropDownTesting> {
     throw Exception('Error fetching data');
   }
 
-  var selectedIdValue,selectedTitleValue;
+  var selectedIdValue, selectedTitleValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,40 +61,37 @@ class _DropDownTestingState extends State<DropDownTesting> {
                             hint: const Text('Select Id...'),
                             value: selectedIdValue,
                             isExpanded: true,
-                            icon: const Icon(Icons.arrow_drop_down_circle_outlined),
-                            items: snapshot.data!.map((e){
+                            icon: const Icon(
+                                Icons.arrow_drop_down_circle_outlined),
+                            items: snapshot.data!.map((e) {
                               return DropdownMenuItem(
                                   value: e.id.toString(),
                                   child: Text(e.id.toString()));
                             }).toList(),
                             onChanged: (value) {
                               selectedIdValue = value;
-                              setState(() {
-
-                              });
+                              setState(() {});
                             }),
                         const SizedBox(height: 10),
                         DropdownButton(
                             hint: const Text('Select title...'),
                             value: selectedTitleValue,
-                            icon: const Icon(Icons.arrow_drop_down_circle_outlined),
+                            icon: const Icon(
+                                Icons.arrow_drop_down_circle_outlined),
                             isExpanded: true,
-                            items: snapshot.data!.map((e){
+                            items: snapshot.data!.map((e) {
                               return DropdownMenuItem(
                                   value: e.title.toString(),
                                   child: Text(e.title.toString()));
                             }).toList(),
                             onChanged: (value) {
                               selectedTitleValue = value;
-                              setState(() {
-
-                              });
+                              setState(() {});
                             })
                       ],
                     );
                   } else {
-                    return const Center(
-                        child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 })
           ],
@@ -103,5 +100,3 @@ class _DropDownTestingState extends State<DropDownTesting> {
     );
   }
 }
-
-
