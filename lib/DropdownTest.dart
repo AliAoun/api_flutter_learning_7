@@ -58,9 +58,10 @@ class _DropDownTestingState extends State<DropDownTesting> {
                     return Column(
                       children: [
                         DropdownButton(
-                            hint: Text('Select Id...'),
+                            hint: const Text('Select Id...'),
                             value: selectedIdValue,
                             isExpanded: true,
+                            icon: const Icon(Icons.arrow_drop_down_circle_outlined),
                             items: snapshot.data!.map((e){
                               return DropdownMenuItem(
                                   value: e.id.toString(),
@@ -72,9 +73,11 @@ class _DropDownTestingState extends State<DropDownTesting> {
 
                               });
                             }),
+                        const SizedBox(height: 10),
                         DropdownButton(
-                            hint: Text('Select title...'),
+                            hint: const Text('Select title...'),
                             value: selectedTitleValue,
+                            icon: const Icon(Icons.arrow_drop_down_circle_outlined),
                             isExpanded: true,
                             items: snapshot.data!.map((e){
                               return DropdownMenuItem(
@@ -90,7 +93,7 @@ class _DropDownTestingState extends State<DropDownTesting> {
                       ],
                     );
                   } else {
-                    return Center(
+                    return const Center(
                         child: CircularProgressIndicator());
                   }
                 })
@@ -101,19 +104,4 @@ class _DropDownTestingState extends State<DropDownTesting> {
   }
 }
 
-List<PostsModel> postList = [];
 
-Future<List<PostsModel>> getPostApi() async {
-  final response =
-      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
-  var data = jsonDecode(response.body.toString());
-  if (response.statusCode == 200) {
-    postList.clear();
-    for (Map i in data) {
-      postList.add(PostsModel.fromJson(i));
-    }
-    return postList;
-  } else {
-    return postList;
-  }
-}
